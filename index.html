@@ -304,7 +304,8 @@
     <div class="container">
       <div class="kicker">Contact</div>
       <h2>Let's build something reliable</h2>
-      <div class="card"><div class="content">
+      <div class="card">
+    <div class="content">
         <form class="grid2" id="contact-form" action="https://formspree.io/f/mnnbwdjp" method="POST">
           <label><input type="text" name="name" placeholder="Name" id="fname" required /></label>
           <label><input type="email" name="email" placeholder="Email" id="email" required /></label>
@@ -341,6 +342,7 @@
     });
 
     // contact -> mailto
+    /*
     document.getElementById('contact-form').addEventListener('submit', function(e){
       e.preventDefault();
       const data = new FormData(this);
@@ -351,7 +353,7 @@
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${msg}`);
       const subject = encodeURIComponent(`Portfolio Inquiry — ${name || 'Website'}`);
       window.location.href = `mailto:byagihas@gmail.com?subject=${subject}&body=${body}`;
-    });
+    });*/
 
     // year
     document.getElementById('year').textContent = new Date().getFullYear();
