@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brandon Yagihashi — Portfolio</title>
+  <meta name="description" content="Digital Developer & Technical Specialist — Portfolio of Brandon Yagihashi" />
+  <meta http-equiv="Content-Security-Policy" content="form-action 'self' https://formspree.io/f/mnnbwdjp">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --card: #12141a;
+      --muted: #99a1b3;
+      --text: #e5e7eb;
+      --primary: #7c8cff;
+      --border: #1f2330;
+      --ring: rgba(124, 140, 255, .35);
+      --shadow: rgba(0,0,0,.45);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: linear-gradient(180deg, #0b0c0f 0%, #0b0c0f 50%, #0e1117 100%); }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(12px); background: rgba(11,12,15,.7); border-bottom: 1px solid var(--border); }
+    .nav-inner { height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+    .brand-badge { height: 32px; width: 32px; border-radius: 10px; background: rgba(124,140,255,.12); display: grid; place-items: center; }
+    .brand-badge svg { width: 18px; height: 18px; fill: var(--primary); }
+    .nav-links { display: none; gap: 8px; }
+    .nav-links a { padding: 8px 12px; border-radius: 10px; }
+    .nav-links a:hover { background: #161922; }
+    @media (min-width: 640px) { .nav-links { display: flex; } }
+
+    /* HERO */
+    .hero { padding: 72px 0 32px; }
+    .grid { display: grid; gap: 24px; }
+    @media (min-width: 980px) { .grid-2 { grid-template-columns: 1fr 1fr; align-items: center; } }
+    .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--muted); }
+    h1 { font-size: clamp(28px, 3.2vw + 18px, 56px); line-height: 1.1; margin: 8px 0 0; }
+    .lead { color: var(--muted); margin: 16px 0 0; max-width: 65ch; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 12px; border: 1px solid var(--border); background: #171923; box-shadow: 0 6px 20px var(--shadow); }
+    .btn.primary { background: var(--primary); color: #0b0c0f; border-color: transparent; }
+    .btn.ghost { background: transparent; }
+    .meta { display: flex; gap: 18px; align-items: center; color: var(--muted); margin-top: 16px; }
+    .meta a { text-decoration: underline; text-underline-offset: 4px; }
+
+    /* CARD */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 10px 30px var(--shadow); }
+    .card .content { padding: 22px; }
+
+    /* ICON ROW */
+    .row { display: grid; gap: 16px; }
+    .row-item { display: flex; gap: 12px; align-items: center; }
+    .iconbox { height: 40px; width: 40px; border-radius: 12px; background: rgba(124,140,255,.12); display: grid; place-items: center; }
+    .row-item p { margin: 0; }
+    .muted { color: var(--muted); font-size: 14px; }
+
+    /* SECTIONS */
+    section { scroll-margin-top: 96px; padding: 36px 0; }
+    section h2 { font-size: 28px; margin: 8px 0 20px; }
+
+    /* EXPERIENCE */
+    .exp { display: grid; gap: 16px; }
+    .exp-head { display: flex; flex-direction: column; gap: 6px; }
+    .exp-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .exp ul { margin: 12px 0 0; padding: 0 0 0 18px; }
+    .exp li { margin: 6px 0; }
+
+    /* SKILLS */
+    .skill-grid { display: grid; gap: 16px; }
+    @media (min-width: 800px) { .skill-grid { grid-template-columns: 1fr 1fr; } }
+    .skill h3 { margin: 0 0 10px; font-size: 18px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { border: 1px solid var(--border); padding: 6px 10px; border-radius: 999px; font-size: 14px; color: #d7dbe7; }
+
+    /* CERTS */
+    .list { margin: 0; padding: 0 0 0 18px; }
+
+    /* CONTACT */
+    form { display: grid; gap: 12px; }
+    @media (min-width: 640px) { form.grid2 { grid-template-columns: 1fr 1fr; } }
+    input, textarea { background: #0f1218; color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; font: inherit; outline: none; }
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--ring); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted); }
+    .foot { display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: space-between; }
+    @media (min-width: 640px) { .foot { flex-direction: row; } }
+    .foot a { color: var(--muted); }
+    .foot a:hover { color: var(--text); }
+
+    /* UTIL */
+    .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .fadein { animation: fadein .5s ease both; }
+    @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm4.5 0a3.5 3.5 0 0 0 6.99.25H17v1.5h2V10h-2v1.25h-1.51A3.5 3.5 0 0 0 8.5 12Z"/></svg>
+        </div>
+        <span>Brandon Yagihashi</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero container fadein">
+    <div class="grid grid-2">
+      <div>
+        <div class="kicker">Digital Developer & Technical Specialist</div>
+        <h1>Building reliable marketing & platform experiences.</h1>
+        <p class="lead">I blend marketing tech, full‑stack foundations, and production support to ship data‑driven, resilient solutions. Strong in Responsys personalization, ETL integrations, and systems uptime.</p>
+        <div class="cta">
+          <a class="btn primary" href="#experience">View Experience</a>
+          <a class="btn" href="#skills">Explore Skills</a>
+          <a class="btn ghost" href="/resume.pdf" download>Download Resume</a>
+        </div>
+        <div class="meta">
+          <span>Chicago, IL (CST)</span>
+          <a href="mailto:byagihas@gmail.com">byagihas@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="content">
+            <div class="row">
+              <div class="row-item">
+                <div class="iconbox" aria-hidden>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6"/><path d="M6 12H2"/><path d="M7 19h10"/><path d="M7 5h10"/><rect x="5" y="8" width="14" height="8" rx="2"/></svg>
+                </div>
+                <div>
+                  <p><strong>Production Support</strong></p>
+                  <p class="muted">On‑call, SLOs, runbooks, incident response</p>
+                </div>
+              </div>
+              <div class="row-item">
+                <div class="iconbox" aria-hidden>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg>
+                </div>
+                <div>
+                  <p><strong>Data Integrations</strong></p>
+                  <p class="muted">REST/SOAP, ETL, PL/SQL, T‑SQL</p>
+                </div>
+              </div>
+              <div class="row-item">
+                <div class="iconbox" aria-hidden>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h10"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+                </div>
+                <div>
+                  <p><strong>MarTech Engineering</strong></p>
+                  <p class="muted">Responsys personalization, DCM, QA</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="kicker">Experience</div>
+      <h2>Where I've Built & Supported</h2>
+      <div class="exp">
+        <div class="card"><div class="content">
+          <div class="exp-top">
+            <div class="exp-head">
+              <div class="title"><strong>Production Support Engineer</strong></div>
+              <div class="muted">Ritchie Bros Auctioneers</div>
+            </div>
+            <div class="muted">2020 – Present</div>
+          </div>
+          <ul>
+            <li>Led on-call production support and root-cause analysis for high-traffic auction systems.</li>
+            <li>Built runbooks and automated checks that reduced incident resolution time.</li>
+            <li>Partnered with engineering to ship resilient fixes and postmortems.</li>
+          </ul>
+        </div></div>
+
+        <div class="card"><div class="content">
+          <div class="exp-top">
+            <div class="exp-head">
+              <div class="title"><strong>Campaign Engineer</strong></div>
+              <div class="muted">Oracle</div>
+            </div>
+            <div class="muted">2017 – 2020</div>
+          </div>
+          <ul>
+            <li>Implemented complex Responsys personalization and dynamic content across global campaigns.</li>
+            <li>Built ETL jobs and REST/SOAP integrations for audience and event data flows.</li>
+            <li>Improved deliverability and QA throughput with reusable templates.</li>
+          </ul>
+        </div></div>
+
+        <div class="card"><div class="content">
+          <div class="exp-top">
+            <div class="exp-head">
+              <div class="title"><strong>Digital Traffic Manager</strong></div>
+              <div class="muted">Laughlin Constable</div>
+            </div>
+            <div class="muted">2016 – 2017</div>
+          </div>
+          <ul>
+            <li>Coordinated multi-channel ad ops and trafficking, ensuring SLA adherence.</li>
+            <li>Streamlined creative specs handoff and version control.</li>
+          </ul>
+        </div></div>
+
+        <div class="card"><div class="content">
+          <div class="exp-top">
+            <div class="exp-head">
+              <div class="title"><strong>Tech Ops Associate</strong></div>
+              <div class="muted">Starcom</div>
+            </div>
+            <div class="muted">2015 – 2016</div>
+          </div>
+          <ul>
+            <li>Supported DoubleClick Campaign Manager setups and reporting pipelines.</li>
+            <li>Maintained tagging standards and data hygiene across campaigns.</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="kicker">Skillset</div>
+      <h2>Tools I Use & Teach</h2>
+      <div class="skill-grid">
+        <div class="card skill"><div class="content">
+          <h3>Code</h3>
+          <div class="pills">
+            <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">LESS</span><span class="pill">SASS</span><span class="pill">JavaScript</span><span class="pill">JSON</span><span class="pill">XML</span><span class="pill">Ruby</span><span class="pill">Python</span><span class="pill">C++</span><span class="pill">C#/.NET</span><span class="pill">RPL (Responsys)</span>
+          </div>
+        </div></div>
+        <div class="card skill"><div class="content">
+          <h3>Frameworks</h3>
+          <div class="pills">
+            <span class="pill">Node.js</span><span class="pill">React</span><span class="pill">Freemarker</span><span class="pill">Responsys ESP</span><span class="pill">DCM (Campaign Manager)</span><span class="pill">Ruby on Rails</span>
+          </div>
+        </div></div>
+        <div class="card skill"><div class="content">
+          <h3>Data</h3>
+          <div class="pills">
+            <span class="pill">Oracle PL/SQL</span><span class="pill">T‑SQL</span><span class="pill">REST</span><span class="pill">SOAP</span><span class="pill">ETL</span>
+          </div>
+        </div></div>
+        <div class="card skill"><div class="content">
+          <h3>Servers</h3>
+          <div class="pills">
+            <span class="pill">Linux (Ubuntu/CentOS)</span><span class="pill">Apache</span><span class="pill">nginx</span><span class="pill">pm2</span><span class="pill">SSH/Powershell/SFTP</span><span class="pill">GCP</span><span class="pill">DigitalOcean</span><span class="pill">MS SQL Server</span>
+          </div>
+        </div></div>
+        <div class="card skill"><div class="content">
+          <h3>Concepts</h3>
+          <div class="pills">
+            <span class="pill">Agile</span><span class="pill">DRY</span><span class="pill">A/B & Multivariate Testing</span><span class="pill">Digital Deliverability</span>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <section id="certs">
+    <div class="container">
+      <div class="kicker">Certifications</div>
+      <h2>Proof I Did The Homework</h2>
+      <div class="card"><div class="content">
+        <ul class="list">
+          <li>Responsys Implementation Certified Specialist (2020)</li>
+          <li>Oracle Cloud Infrastructure Foundations Associate</li>
+          <li>Eloqua Masters B2B (2019)</li>
+          <li>DoubleClick Campaign Manager</li>
+        </ul>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="kicker">Contact</div>
+      <h2>Let's build something reliable</h2>
+      <div class="card"><div class="content">
+        <form class="grid2" id="contact-form" action="https://formspree.io/f/mnnbwdjp" method="POST">
+          <input type="text" name="fname" placeholder="Name" id="fname" required />
+          <input type="email" name="email" placeholder="Email" id="email" required />
+          <input type="text" name="phone" placeholder="Phone (optional)" id="comments" style="grid-column: 1 / -1;" />
+          <textarea name="comments" placeholder="How can I help?" required style="grid-column: 1 / -1;"></textarea>
+          <img src="/seccap"/>&nbsp;<input id="captcha" name="captcha" maxlength="5" required ></input>
+          <button type="submit" id="submitbutton" class="btn primary" style="grid-column: 1 / -1; width: max-content;">Send</button>
+          <p class="muted" style="grid-column: 1 / -1;">Or email me directly at <a href="mailto:byagihas@gmail.com">byagihas@gmail.com</a></p>
+        </form>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <p>© <span id="year"></span> Brandon Yagihashi. All rights reserved.</p>
+      <nav style="display:flex; gap:14px;">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certifications</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // smooth scroll focus style
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // contact -> mailto
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(this);
+      const name = data.get('name') || '';
+      const email = data.get('email') || '';
+      const phone = data.get('phone') || '';
+      const msg = data.get('message') || '';
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${msg}`);
+      const subject = encodeURIComponent(`Portfolio Inquiry — ${name || 'Website'}`);
+      window.location.href = `mailto:byagihas@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
